@@ -1,0 +1,42 @@
+server:
+  port: 9080
+management:
+  server:
+    port: 9081
+  endpoint:
+    health:
+      enabled: true
+    beans:
+      enabled: true
+      cache:
+        time-to-live: 100s
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /
+      path-mapping:
+        health: health
+      exposure:
+        include: health
+        exclude: beans
+
+spring:
+  application:
+    name: staging
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+kafka:
+  topics:
+    my_test_topic: my-test-topic
+  groups:
+    my_test_group: my-test-group
+
+logging:
+  file:
+    path: /Users/zoubaolu/code/workspace/idea/spring-boot-staging/logs
