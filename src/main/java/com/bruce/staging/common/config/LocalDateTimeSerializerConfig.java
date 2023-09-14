@@ -1,4 +1,4 @@
-package com.bruce.staging.config;
+package com.bruce.staging.common.config;
 
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

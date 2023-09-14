@@ -45,6 +45,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!--*********************************aop*********************************-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--*********************************validation*********************************-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

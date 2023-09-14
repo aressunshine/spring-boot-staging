@@ -1,4 +1,4 @@
-package com.bruce.staging.config;
+package com.bruce.staging.component;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;

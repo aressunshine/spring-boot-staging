@@ -1,4 +1,4 @@
-package com.bruce.staging.base;
+package com.bruce.staging.common.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 自定义BaseMapper接口
+ * CommonMapper接口
  *
  * @author Brucezou
  */
-public interface CustomBaseMapper<T> extends BaseMapper<T> {
+public interface CommonMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量插入

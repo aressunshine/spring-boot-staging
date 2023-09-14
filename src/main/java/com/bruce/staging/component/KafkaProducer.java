@@ -1,19 +1,19 @@
-package com.bruce.staging.service;
+package com.bruce.staging.component;
 
 import com.alibaba.fastjson2.JSON;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
 
-@Service
+@Component
 @Slf4j
 public class KafkaProducer {
 
-    @Autowired
+    @Resource
     private KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessage(String topic, String key, Object obj) {

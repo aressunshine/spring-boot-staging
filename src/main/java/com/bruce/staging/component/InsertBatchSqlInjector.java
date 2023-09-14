@@ -1,4 +1,4 @@
-package com.bruce.staging.config;
+package com.bruce.staging.component;
 
 import com.baomidou.mybatisplus.core.injector.AbstractMethod;
 import com.baomidou.mybatisplus.core.injector.DefaultSqlInjector;

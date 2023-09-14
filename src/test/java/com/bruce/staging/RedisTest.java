@@ -1,20 +1,21 @@
 package com.bruce.staging;
 
-
+import com.bruce.staging.component.RedisTools;
 import com.bruce.staging.domain.UserInfo;
-import com.bruce.staging.service.UserInfoService;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserInfoTest {
+public class RedisTest {
+
+    public static final String KEY = "user_info";
 
     @Resource
-    private UserInfoService userInfoService;
+    private RedisTools redisTools;
 
     @Test
-    void saveOneUser() {
+    void setValue() {
         UserInfo userInfo = new UserInfo();
         userInfo.setUsername("BruceZou");
         userInfo.setNickname("bruce");
@@ -22,21 +23,12 @@ class UserInfoTest {
         userInfo.setTelephone("13800000000");
         userInfo.setEmail("123@bruce.com");
         userInfo.setSex((byte) 0);
-        userInfoService.save(userInfo);
+        redisTools.set(KEY, userInfo);
     }
 
     @Test
-    void batchSaveUser() {
-
-    }
-
-    @Test
-    void updateUser() {
-
-    }
-
-    @Test
-    void batchUpdateUser() {
-
+    void getValue() {
+        UserInfo userInfo = redisTools.get(KEY);
+        System.out.println(userInfo);
     }
 }
