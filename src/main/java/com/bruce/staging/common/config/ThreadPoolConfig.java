@@ -13,33 +13,17 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 public class ThreadPoolConfig {
 
-    /**
-     * 核心线程池大小
-     */
-    private int corePoolSize = 50;
-
-    /**
-     * 最大可创建的线程数
-     */
-    private int maxPoolSize = 200;
-
-    /**
-     * 队列最大长度
-     */
-    private int queueCapacity = 1000;
-
-    /**
-     * 线程池维护线程所允许的空闲时间(s)
-     */
-    private int keepAliveSeconds = 300;
-
     @Bean(name = "threadPoolTaskExecutor")
     public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setMaxPoolSize(maxPoolSize);
-        executor.setCorePoolSize(corePoolSize);
-        executor.setQueueCapacity(queueCapacity);
-        executor.setKeepAliveSeconds(keepAliveSeconds);
+        //核心线程池大小
+        executor.setCorePoolSize(50);
+        //最大可创建的线程数
+        executor.setMaxPoolSize(200);
+        //队列最大长度
+        executor.setQueueCapacity(1000);
+        //线程池维护线程所允许的空闲时间(s)
+        executor.setKeepAliveSeconds(300);
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         return executor;
     }
@@ -51,7 +35,7 @@ public class ThreadPoolConfig {
     protected ScheduledExecutorService scheduledExecutorService() {
         final BasicThreadFactory factory = new BasicThreadFactory.Builder().namingPattern("schedule-pool-%d").daemon(true).build();
         final ThreadPoolExecutor.CallerRunsPolicy policy = new ThreadPoolExecutor.CallerRunsPolicy();
-        return new ScheduledThreadPoolExecutor(corePoolSize, factory, policy) {
+        return new ScheduledThreadPoolExecutor(20, factory, policy) {
             @Override
             protected void afterExecute(Runnable r, Throwable t) {
                 super.afterExecute(r, t);
