@@ -22,4 +22,9 @@ public class MyBatisPlusConfig {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         return interceptor;
     }
+
+    @Bean
+    public InsertBatchSqlInjector easySqlInjector() {
+        return new InsertBatchSqlInjector();
+    }
 }

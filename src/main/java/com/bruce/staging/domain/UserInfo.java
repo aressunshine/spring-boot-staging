@@ -85,12 +85,12 @@ public class UserInfo implements Serializable {
      */
     @Schema(title = "创建时间", type = "dateTime", example = "2023-01-01 00:00:00")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private LocalDateTime create_time;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
     @Schema(title = "更新时间", type = "datetime", example = "2023-01-01 00:00:00")
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 }
