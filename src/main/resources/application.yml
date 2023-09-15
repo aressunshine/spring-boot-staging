@@ -1,5 +1,7 @@
 server:
   port: 9080
+  servlet:
+    context-path: /
 management:
   server:
     port: 9081
@@ -18,7 +20,7 @@ management:
       path-mapping:
         health: health
       exposure:
-        include: health
+        include: "*"
         exclude: beans
 
 spring:

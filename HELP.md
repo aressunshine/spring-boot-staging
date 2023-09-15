@@ -51,11 +51,10 @@ description：描述
 example：示例值
 required：是否为必须
 format：属性的格式。如 @Schema(format = “email”)
-maxLength 、 minLength：指定字符串属性的最大长度和最小长度
-maximum 、 minimum：指定数值属性的最大值和最小值
+maxLength、minLength：指定字符串属性的最大长度和最小长度
+maximum、minimum：指定数值属性的最大值和最小值
 pattern：指定属性的正则表达式模式
-type： 数据类型（integer，long，float，double，string，byte，binary，
-boolean，date，dateTime，password），必须是字符串。
+type： 数据类型（integer，long，float，double，string，byte，binary，boolean，date，dateTime，password），必须是字符串。
 如 @Schema=(type=“integer”)
 implementation ：具体的实现类，可以是类本身，也可以是父类或实现的接口
 

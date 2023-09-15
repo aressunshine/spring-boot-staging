@@ -24,6 +24,7 @@ public class ThreadPoolConfig {
         executor.setQueueCapacity(1000);
         //线程池维护线程所允许的空闲时间(s)
         executor.setKeepAliveSeconds(300);
+        executor.setTaskDecorator(new MdcTaskDecorator());
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         return executor;
     }

@@ -4,9 +4,11 @@ import com.bruce.staging.common.wrapper.RepeatableRequestWrapper;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Repeatable 过滤器
@@ -20,20 +22,15 @@ public class RepeatableFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         ServletRequest requestWrapper = null;
         if (request instanceof HttpServletRequest) {
             String contentType = request.getContentType();
-            if (contentType != null && contentType.contains(MediaType.APPLICATION_JSON_VALUE)) {
+            if (StringUtils.isNotBlank(contentType) && contentType.contains(MediaType.APPLICATION_JSON_VALUE)) {
                 requestWrapper = new RepeatableRequestWrapper((HttpServletRequest) request, response);
             }
         }
-        if (null == requestWrapper) {
-            chain.doFilter(request, response);
-        } else {
-            chain.doFilter(requestWrapper, response);
-        }
+        chain.doFilter(Objects.isNull(requestWrapper) ? request : requestWrapper, response);
     }
 
     @Override

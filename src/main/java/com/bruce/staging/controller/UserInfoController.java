@@ -1,5 +1,6 @@
 package com.bruce.staging.controller;
 
+import com.bruce.staging.common.model.ResponseResult;
 import com.bruce.staging.domain.UserInfo;
 import com.bruce.staging.service.UserInfoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,14 +29,14 @@ public class UserInfoController {
             parameters = {@Parameter(name = "id", required = true, in = ParameterIn.PATH)},
             responses = {
                     @ApiResponse(responseCode = "200", description = "成功", content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserInfo.class))),
+                            schema = @Schema(implementation = ResponseResult.class))),
                     @ApiResponse(responseCode = "400", description = "错误", content = @Content(mediaType = "application/json"))
             }
     )
-    public ResponseEntity<UserInfo> getUserById(@PathVariable Long id) {
+    public ResponseResult<UserInfo> getUserById(@PathVariable Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
-        return ResponseEntity.ok(userInfo);
+        return ResponseResult.ok(userInfo);
     }
 
     @DeleteMapping("/{id}")
@@ -45,10 +46,10 @@ public class UserInfoController {
                     @Parameter(name = "id", required = true, in = ParameterIn.PATH)
             }
     )
-    public ResponseEntity<UserInfo> deleteUserById(@PathVariable Long id) {
+    public ResponseResult<UserInfo> deleteUserById(@PathVariable Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
-        return ResponseEntity.ok(userInfo);
+        return ResponseResult.ok(userInfo);
     }
 
     @PostMapping("/")
@@ -59,12 +60,12 @@ public class UserInfoController {
             ),
             responses = {
                     @ApiResponse(responseCode = "200", description = "成功", content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserInfo.class))),
+                            schema = @Schema(implementation = ResponseResult.class))),
                     @ApiResponse(responseCode = "400", description = "错误", content = @Content(mediaType = "application/json"))
             }
     )
-    public ResponseEntity<UserInfo> body(@RequestBody UserInfo userInfo) {
-        return ResponseEntity.ok(userInfo);
+    public ResponseResult<UserInfo> body(@RequestBody UserInfo userInfo) {
+        return ResponseResult.ok(userInfo);
     }
 
     @Operation(summary = "根据用户ID更新用户")
@@ -74,11 +75,11 @@ public class UserInfoController {
             @Parameter(name = "name", description = "文件名称", required = true, in = ParameterIn.QUERY)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<UserInfo> bodyParamHeaderPath(@PathVariable("id") String id,
+    public ResponseResult<UserInfo> bodyParamHeaderPath(@PathVariable("id") String id,
                                                         @RequestHeader("token") String token,
                                                         @RequestParam("name") String name,
                                                         @RequestBody UserInfo userInfo) {
         userInfo.setUsername(id + "-" + name + "-" + token);
-        return ResponseEntity.ok(userInfo);
+        return ResponseResult.ok(userInfo);
     }
 }

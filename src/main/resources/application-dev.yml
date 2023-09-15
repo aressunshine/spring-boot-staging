@@ -149,7 +149,7 @@ springdoc:
   group-configs:
     - group: 'default'
       paths-to-match: '/**'
-      packages-to-scan: com.bruce.staging.controller
+      packages-to-scan: com.bruce.staging
   default-flat-param-object: true
 # knife4j的增强配置，不需要增强可以不配
 knife4j:
@@ -168,7 +168,7 @@ knife4j:
     enable-host: false
     enable-host-text: localhost:8000
     enable-home-custom: true
-    home-custom-path: classpath:markdown/home.md
+    # home-custom-path: classpath:markdown/home.md
     enable-search: false
     enable-footer: false
     enable-footer-custom: true

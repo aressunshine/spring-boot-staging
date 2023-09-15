@@ -1,7 +1,8 @@
-package com.bruce.staging.common.event;
+package com.bruce.staging.consumer;
 
 
 import com.alibaba.fastjson2.JSON;
+import com.bruce.staging.common.event.UserInfoEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
