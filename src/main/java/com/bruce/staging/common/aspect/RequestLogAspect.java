@@ -8,6 +8,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 
@@ -15,11 +16,12 @@ import org.springframework.stereotype.Component;
  * 请求日志切面类
  */
 @Slf4j
+@Order(1)
 @Aspect
 @Component
 public class RequestLogAspect {
 
-    @Pointcut("execution (* com.bruce.staging.controller.*.*.*(..))")
+    @Pointcut("execution (* com.bruce.staging.controller.*.*(..))")
     public void logPoint() {
 
     }
