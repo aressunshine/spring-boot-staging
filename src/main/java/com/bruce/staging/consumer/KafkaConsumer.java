@@ -2,6 +2,7 @@ package com.bruce.staging.consumer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
+@ConditionalOnProperty(value = "kafka.enable", havingValue = "true")
 public class KafkaConsumer {
 
     @KafkaListener(topics = "#{'${kafka.topics.my_test_topic}'}", groupId = "#{'${kafka.groups.my_test_group}'}", concurrency = "3")

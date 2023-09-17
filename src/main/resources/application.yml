@@ -34,6 +34,7 @@ spring:
 
 
 kafka:
+  enable: false
   topics:
     my_test_topic: my-test-topic
   groups:
